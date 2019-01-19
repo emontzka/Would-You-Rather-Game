@@ -1,28 +1,31 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import 'semantic-ui-css/semantic.min.css';
 import './App.css';
+import { connect } from 'react-redux'
+import { handleInitialData } from './actions/shared';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import Questions from './components/Questions';
+import Login from './components/Login';
+import Dashboard from './components/Dashboard';
+
+
 
 class App extends Component {
+  componentDidMount() {
+    this.props.dispatch(handleInitialData())
+  }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Router>
+        <div className="App">
+        <Dashboard />
+          {/* <Questions />
+          <Login /> */}
+          Hello.
+        </div>
+      </Router>
     );
   }
 }
 
-export default App;
+export default connect()(App);
