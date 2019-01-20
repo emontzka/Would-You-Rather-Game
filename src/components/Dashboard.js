@@ -10,7 +10,6 @@ class Dashboard extends Component {
     console.log('props', authedUser)
     return (
       <div>
-        Dashboard
         {authedUser === null  ? (
           <Login />
         ) : (

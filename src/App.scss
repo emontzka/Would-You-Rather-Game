@@ -1,0 +1,29 @@
+.App {
+  text-align: center;
+}
+$orange: #f77943;
+$green: #43f79d;
+$black: #4d3a32;
+$white: #f7f6f5;
+
+.ui.button,
+.ui.button:visited,
+.ui.button:active {
+  background-color: $orange !important; 
+  color: $white !important;
+}
+ui.button:hover {
+  background-color: darken($orange, 10%) !important;
+  color: $white !important;
+}
+body {
+ background-color: $white;
+ color: $black;
+ font-size: 16px/120%;
+}
+.container {
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
