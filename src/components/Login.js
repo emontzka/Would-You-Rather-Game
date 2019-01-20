@@ -5,26 +5,27 @@ import { LoginAuthedUser } from '../actions/authedUser';
 
 
 class Login extends Component {
-  state = {}
+  state = {value : ''}
   handleChange = (e, { value }) => this.setState({ value })
   handleSubmit = (e) => {
     e.preventDefault();
     const { value } = this.state;
     this.props.dispatch(LoginAuthedUser(value));
-    console.log(value);
 
   }
 
 
   render() {
-    // console.log(this.props.users)
+    console.log(this.state)
+    const {userArray} = this.props;
+    const {value} = this.state;
     return (
       <div>
         <Form onSubmit={this.handleSubmit}>
           <Form.Field>
             <Select placeholder='Select User'  onChange={this.handleChange} options={this.props.userArray} />
           </Form.Field>
-          <Form.Button type='submit'>Login</Form.Button>
+          <Form.Button disabled={value === ''} type='submit'>Login</Form.Button>
         </Form>
         
         {/* {this.props.authedUser === null && "is null"} */}
