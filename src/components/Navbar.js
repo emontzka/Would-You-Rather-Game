@@ -1,40 +1,51 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { NavLink, Route } from 'react-router-dom'
-import { Menu, Divider } from 'semantic-ui-react'
+import { NavLink, Link, Route } from 'react-router-dom'
+import { Menu } from 'semantic-ui-react'
+import { initAuthedUser } from '../actions/authedUser';
 
 
 
 class Navbar extends Component {
+  logOut = (e) => {
+    e.preventDefault()
+    console.log('logout')
+    this.props.dispatch(initAuthedUser(null))
+  }
   render() {
     return (
-      <Fragment>
       <div className='container'>
         <Menu pointing secondary>
-          <Menu.Item as={NavLink} exact to='/'>
+          <Menu.Item activeClassName='active' as={NavLink} exact to='/'>
             Home
           </Menu.Item>
           <Menu.Item
             as={NavLink}
-            
+            activeClassName='active' 
             to='/leaderboard'
             >
             Leader Board
           </Menu.Item>
+          <Menu.Menu position='right'>
+          <Menu.Item as={Link} to='/'>
+            {this.props.authedUser === null 
+              ? <span>Log in</span>
+              : <span onClick={this.logOut}>Log out</span>}
+          </Menu.Item>
+          </Menu.Menu>
+
         </Menu>
-        <NavLink exact to='/' activeClassName='selected'>Home</NavLink>
-        <NavLink  to='/leaderboard' activeClassName='selected'>Leader Board</NavLink>
+
       </div>
-      <Divider />
-      </Fragment>
+   
     )
   }
 }
 
-function mapStateToProps({match}) {
+function mapStateToProps({authedUser}) {
   return {
-    match
+    authedUser
   }
 }
 
-export default connect()(Navbar)
+export default connect(mapStateToProps)(Navbar)

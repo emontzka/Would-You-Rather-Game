@@ -22,11 +22,9 @@ class App extends Component {
       <Router>
         <div className="App">
         <Navbar />
+        
           <Route path='/' exact component={Dashboard} />
           <Route path='/leaderboard'  component={LeaderBoard} />
-          {/* <Questions />
-          <Login /> */}
-          Hello.
         </div>
       </Router>
     );
