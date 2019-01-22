@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import Leader from './Leader';
 import { Table } from 'semantic-ui-react'
+import { withRouter } from 'react-router-dom'
 
 
 class LeaderBoard extends Component {
@@ -11,7 +12,7 @@ class LeaderBoard extends Component {
 
     return (
       <div className='container'>
-        <Table celled padded>
+        <Table celled padded unstackable>
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Users</Table.HeaderCell>
@@ -38,7 +39,6 @@ function mapStateToProps({users}) {
   const lbData = Object.keys(users).map((user) => {
     let numAnswers = Object.keys(users[user].answers).length;
     let numQuestions = Object.keys(users[user].questions).length;
-    // let total = numAnswers + numQuestions;
     let data = {
       'numAnswers': numAnswers,
       'numQuestions': numQuestions,

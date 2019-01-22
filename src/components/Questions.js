@@ -21,7 +21,7 @@ class Questions extends Component {
     ? questionIds.filter(id => authedUser.answers[id] === undefined)
     : questionIds.filter(id => authedUser.answers[id] !== undefined);
     return (
-      <div>
+      <div className='container'>
         <Button onClick={this.toggleDisplay}>Show {btnText} Questions</Button>
         <ul>
         {questionList.map( question => {
