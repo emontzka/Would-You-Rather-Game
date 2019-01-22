@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { NavLink, Link, Route } from 'react-router-dom'
+import { NavLink, Link, withRouter } from 'react-router-dom'
 import { Menu } from 'semantic-ui-react'
 import { initAuthedUser } from '../actions/authedUser';
 
@@ -16,13 +16,13 @@ class Navbar extends Component {
     return (
       <div className='container'>
         <Menu pointing secondary>
-          <Menu.Item activeClassName='active' as={NavLink} exact to='/'>
+          <Menu.Item as={NavLink} activeClassName='active'  exact to='/'>
             Home
           </Menu.Item>
           <Menu.Item
             as={NavLink}
             activeClassName='active' 
-            to='/leaderboard'
+            exact to='/leaderboard'
             >
             Leader Board
           </Menu.Item>
@@ -48,4 +48,4 @@ function mapStateToProps({authedUser}) {
   }
 }
 
-export default connect(mapStateToProps)(Navbar)
+export default withRouter(connect(mapStateToProps)(Navbar))
