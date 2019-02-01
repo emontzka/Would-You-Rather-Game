@@ -22,15 +22,22 @@ class Navbar extends Component {
           <Menu.Item
             as={NavLink}
             activeClassName='active' 
-            exact to='/leaderboard'
+            to='/leaderboard'
             >
             Leader Board
           </Menu.Item>
+          <Menu.Item
+            as={NavLink}
+            activeClassName='active' 
+            to='/new'
+            >
+            New Question
+          </Menu.Item>          
           <Menu.Menu position='right'>
           <Menu.Item as={Link} to='/'>
             {this.props.authedUser === null 
               ? <span>Log in</span>
-              : <span onClick={this.logOut}>Log out</span>}
+              : <span onClick={this.logOut}>Log out {this.props.users[this.props.authedUser].name}</span>}
           </Menu.Item>
           </Menu.Menu>
 
@@ -42,9 +49,10 @@ class Navbar extends Component {
   }
 }
 
-function mapStateToProps({authedUser}) {
+function mapStateToProps({authedUser, users}) {
   return {
-    authedUser
+    authedUser,
+    users 
   }
 }
 

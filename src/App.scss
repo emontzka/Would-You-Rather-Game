@@ -6,24 +6,34 @@ $green: #43f79d;
 $black: #4d3a32;
 $white: #f7f6f5;
 
-.ui.button,
-.ui.button:visited,
-.ui.button:active {
-  background-color: $orange !important; 
-  color: $white !important;
-}
-ui.button:hover {
-  background-color: darken($orange, 10%) !important;
-  color: $white !important;
-}
+
 body {
  background-color: $white;
  color: $black;
  font-size: 16px/120%;
 }
-.container {
-  width: 90%;
-  max-width: 800px;
-  margin: 0 auto;
+
+.ui.text.container {
+  max-width: 550px;
+}
+.ui.secondary.pointing.menu {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.ui.segment.user-vote {
+  position: relative;
+  background-color: lighten(#21ba45, 50%);
+  &:after {
+    content: '';
+    position: absolute;
+    height: 71px;
+    width: 75px;
+    color: white;
+    background-image: url('images/your-vote.png');
+    top: -35px;
+    right: -35px;
+    transform: rotate(0.03turn);
+  }
 }
 
