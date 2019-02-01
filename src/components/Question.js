@@ -1,57 +1,53 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-// import { Redirect } from 'react-router-dom'
+import { Redirect, Route } from 'react-router-dom'
 import ErrorPage from './ErrorPage';
+import AnswerQuestion from './AnswerQuestion';
+import ViewQuestion from './ViewQuestion';
 
 class Question extends Component {
   
 
   render() {
-    console.log('logging user prop in render: ', this.props.user)
-    if (this.props.user !== undefined) {
-      const {user, questionId, questions} = this.props
+    // console.log('props: ', this.props)
+    if (this.props.authedUser === null) {
+      // console.log('not logged in, redirect to home')
+    } else {
+      const {user, questionId, questions, questionAuthor} = this.props
       const isQuestionValid = Object.keys(questions).includes(questionId)
       const notAnswered = Object.keys(user.answers).includes(questionId);
+      // console.log(notAnswered)
       // if ( isQuestionValid === false) {
-      //   return <ErrorPage />
+      // return <Route render={()=> <ErrorPage /> } />
       // }
-      
+      return (
+        <div>
+         {/* {console.log('not answered: ',notAnswered)} */}
+         {notAnswered ? (
+           <ViewQuestion question={questions[questionId]} authedUser={user} author={questionAuthor} />
+         ) : (
+           <AnswerQuestion  qid={questionId} />
+         )}
+        </div>
+      )
     }
     
-    // {this.props.user === undefined ? console.log('undefined') : console.log('user: ', this.props.user.answers)}
 
-    return (
-      
-      // { !(Object.keys(questions).includes(questionId)) && return <ErrorPage /> }
-      <div>
-       
-        {/* {Object.keys(user).map((us) => {
-          return console.log(us)
-        })} */}
-        {/* {user !== undefined && console.log(user.questions)} */}
-        {/* {question === null && <Redirect to='/404-page' />} */}
-        {/* const userQuestions = Object.values(user.questions) */}
-        {/* { user !== undefined && console.log(Object.values(user.questions))} */}
-        Question component
 
-      </div>
-    )
   }
 }
 
 function mapStateToProps({authedUser,users,questions}, ownProps) {
   const {questionId} = ownProps.match.params
   const user = users[authedUser]
-  console.log('logging user in mapStateToProps: ', user)
-  
-  // const answeredQuestions = Object.keys(users[authedUser]).includes('vthrdm985a262al8qx3do')
-  // const isAnswered = Object.keys(user.answers).includes(id)
-  // const question = questions[ownProps.match.params.id] === undefined ? null : questions[ownProps.match.params.id]
+  const question = questions[questionId]
+  const questionAuthor = users[question.author]
   return {
     authedUser,
     user,
     questionId,
-    questions
+    questions,
+    questionAuthor
   }
 }
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { Form, Select } from 'semantic-ui-react'
+import { Form, Select, Grid, Header, Segment } from 'semantic-ui-react'
 import { LoginAuthedUser } from '../actions/authedUser';
 
 
@@ -16,20 +16,25 @@ class Login extends Component {
 
 
   render() {
-    console.log(this.state)
     const {userArray} = this.props;
     const {value} = this.state;
     return (
-      <div>
-        <Form onSubmit={this.handleSubmit}>
+      <Grid verticalAlign='middle' style={{ height: '100vh', justifyContent: 'center' }}>
+        <Grid.Column style={{ maxWidth: 500 }}>
+        <Form size='large' onSubmit={this.handleSubmit}>
+        <Segment>
+          <Header as='h2'>
+          Would You Rather App
+          </Header>
+          <p>Please Sign In</p>
           <Form.Field>
             <Select placeholder='Select User'  onChange={this.handleChange} options={this.props.userArray} />
           </Form.Field>
-          <Form.Button disabled={value === ''} type='submit'>Login</Form.Button>
+          <Form.Button color='green' disabled={value === ''} type='submit'>Login</Form.Button>
+          </Segment>
         </Form>
-        
-        {/* {this.props.authedUser === null && "is null"} */}
-      </div>
+        </Grid.Column>
+      </Grid>
     )
   }
 }
@@ -43,7 +48,6 @@ function mapStateToProps({users, authedUser}) {
       value: users[user].id
     }
   })
-  // console.log('options: ',userOptions)
   return {
     userArray: userOptions,
     authedUser
