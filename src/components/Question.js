@@ -17,9 +17,9 @@ class Question extends Component {
       const isQuestionValid = Object.keys(questions).includes(questionId)
       const notAnswered = Object.keys(user.answers).includes(questionId);
       // console.log(notAnswered)
-      // if ( isQuestionValid === false) {
-      // return <Route render={()=> <ErrorPage /> } />
-      // }
+      if ( isQuestionValid === false) {
+      return <ErrorPage />
+      }
       return (
         <div>
          {/* {console.log('not answered: ',notAnswered)} */}

@@ -43,6 +43,7 @@ class AnswerQuestion extends Component {
               <Image src={questionAuthor.avatarURL} style={{borderRadius: '50%'}} />
             </Grid.Column>
             <Grid.Column width={12} verticalAlign='middle'>
+              <h2>Would You Rather...</h2>
               <Form style={{ textAlign: 'left' }} onSubmit={this.handleSubmit}>
                 <Form.Field>
                   <Radio
