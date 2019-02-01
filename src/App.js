@@ -4,7 +4,7 @@ import './App.scss';
 import { connect } from 'react-redux'
 import { handleInitialData } from './actions/shared';
 import { Container } from 'semantic-ui-react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Redirect, withRouter } from 'react-router-dom'
 
 import Dashboard from './components/Dashboard';
 import Navbar from './components/Navbar';
@@ -27,7 +27,10 @@ class App extends Component {
       <Route {...rest} render={(props) => (
         authedUser !== null 
         ? <Component {...props} />
-        : <Redirect to='/' />
+        : <Redirect to={{
+          pathname: '/',
+          state: { from: props.location }
+        }} />
       )} />
     )
     
@@ -38,10 +41,11 @@ class App extends Component {
         {authedUser !== null && <Navbar /> }
         <Container text>
          <Switch>
-            <Route path='/' exact component={Dashboard} />
+            
             <PrivateRoute path='/leaderboard' component={LeaderBoard} />
             <PrivateRoute path='/new' component={AskQuestion} />
             <PrivateRoute path='/questions/:questionId' component={Question} />
+            <Route path='/' exact component={Dashboard} />
             <Route  component={ErrorPage} />
          </Switch>
          </Container>
