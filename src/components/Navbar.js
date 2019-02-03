@@ -8,7 +8,6 @@ import { TEMP_ID } from '../actions/shared';
 class Navbar extends Component {
   logOut = (e) => {
     e.preventDefault()
-    console.log('logout')
     this.props.dispatch(initAuthedUser(TEMP_ID))
   }
   render() {
