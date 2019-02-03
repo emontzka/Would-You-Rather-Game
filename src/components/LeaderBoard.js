@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import Leader from './Leader';
 import { Table } from 'semantic-ui-react'
-import { withRouter } from 'react-router-dom'
-
 
 class LeaderBoard extends Component {
   

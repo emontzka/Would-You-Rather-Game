@@ -1,7 +1,7 @@
 import React from 'react'
 import { Progress, Segment} from 'semantic-ui-react'
 import { getPercent } from '../utils/helper'
-import { Grid, Header, Image, Label, Icon } from 'semantic-ui-react'
+import { Grid, Header, Image } from 'semantic-ui-react'
 
 
 export default function ViewQuestion(props) {
@@ -10,7 +10,6 @@ export default function ViewQuestion(props) {
   const optionTwoLength = question.optionTwo.votes.length
   const total = optionOneLength + optionTwoLength;
   const userVote = authedUser.answers[question.id]
-  console.log('vq props: ',userVote)
  
   return (
     <div className='ui text container'>

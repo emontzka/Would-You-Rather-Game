@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { Form, Select, Radio, Grid, Header, Divider, Image } from 'semantic-ui-react'
-import { answerQuestion } from '../actions/questions'
-import { userAnswerQuestion } from '../actions/users'
+import { Form, Radio, Grid, Header, Image } from 'semantic-ui-react'
 import { handleAnswerQuestion } from '../actions/shared';
 
 
@@ -13,23 +11,19 @@ class AnswerQuestion extends Component {
   handleChange = (e, { value }) => this.setState({ value })
   handleSubmit = (e) => {
     e.preventDefault()
-    // need authedUser, qid, option
     const { dispatch, qid, authedUser } = this.props
-    const question  = this.state.value
+    const answer  = this.state.value
     dispatch(handleAnswerQuestion({
       authedUser, 
       qid,
-      answer: question
+      answer
     }))
   }
 
   render() {
-    // const btnColor = 'grey'
     const {value} = this.state
-    const { question, users, questionAuthor } = this.props
-    console.log('props: ',this.props)
-    // const questionAuthor = users[question.author]
-    // console.log('state length ', this.state.question !== null)
+    const { question, questionAuthor } = this.props
+
     return (
       <div className="ui text container">
         <Grid celled>
@@ -82,7 +76,6 @@ function mapStateToProps({users, questions, authedUser },ownProps) {
   return {
     question,
     authedUser,
-    users,
     questionAuthor
   }
 }

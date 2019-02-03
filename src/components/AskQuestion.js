@@ -21,7 +21,6 @@ class AskQuestion extends Component {
     const {dispatch, authedUser, history} = this.props
     const author = authedUser;
     const {optionOneText, optionTwoText} = this.state;
-    console.log('au: ',author)
     dispatch(handleAskQuestion({optionOneText,optionTwoText,author}))
     .then(() => {history.push('/')})
 
@@ -29,7 +28,6 @@ class AskQuestion extends Component {
   }
   render() {
     const IsDisabled = this.state.optionOneText !== '' && this.state.optionTwoText !== '';
-    console.log('ask answer props: ',this.props)
     return (
       <div className='ui text container'>
       <Segment>
