@@ -1,6 +1,6 @@
 import { saveQuestion } from '../utils/api';
 import  {addQuestionToUser} from './users';
-// import { browserHistory } from 'react-router-dom';
+import { showLoading, hideLoading } from 'react-redux-loading-bar'
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const ANSWER_QUESTION = 'ANSWER_QUESTION'
 export const ADD_QUESTION_TO_QUESTIONS = 'ADD_QUESTION_TO_QUESTIONS'
@@ -27,17 +27,13 @@ export function answerQuestion ( { authedUser, qid, answer} ) {
 
 export function handleAskQuestion (question) {
   return (dispatch) => {
+    dispatch(showLoading())
     return saveQuestion( question )
     .then((res) => {
-      console.log(res)
       dispatch(addQuestionToQuestions(res))
       dispatch(addQuestionToUser(res))
-      // console.log(browserHistory)
-
     })
-    // .then(() => {
-    //   dispatch(push('/'))
-    // })
+    .then(() => dispatch(hideLoading()))
   }
 }
 

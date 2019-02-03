@@ -2,7 +2,6 @@ import React from 'react'
 import { Table } from 'semantic-ui-react'
 
 export default function Leader(props) {
-  console.log(props)
   const {  name, avatarURL, numAnswers, numQuestions, total } = props.data
   return (
     <Table.Row>
