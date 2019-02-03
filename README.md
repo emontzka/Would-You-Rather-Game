@@ -1,4 +1,4 @@
-#Would You Rather App
+# Would You Rather App
 
 This is a voting app for Udacity's React Redux course. 
 
