@@ -26,6 +26,8 @@ class App extends Component {
   
   render() {
     const { hasTempId, loading } = this.props
+
+    // Inspired by Tyler Mcginnis: https://tylermcginnis.com/react-router-protected-routes-authentication/
     const PrivateRoute = ( {component: Component, ...rest}) => (
       <Route {...rest} render={(props) => (
         (!hasTempId && !loading)
