@@ -2,6 +2,8 @@
 
 This is a voting app for Udacity's React Redux course. 
 
+[View app demo](https://would-you-rather-game.netlify.com/)
+
 ## Getting Started
 
 *install project dependencie with `yarn install`
