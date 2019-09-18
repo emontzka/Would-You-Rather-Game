@@ -1,21 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import { createStore } from 'redux' 
-import reducer from './reducers'
-import { Provider } from 'react-redux'
-import middleware from './middleware';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import { createStore } from "redux";
+import reducer from "./reducers";
+import { Provider } from "react-redux";
+import middleware from "./middleware";
+import { composeWithDevTools } from "redux-devtools-extension";
 
-
-const store = createStore( reducer, composeWithDevTools(middleware))
+const store = createStore(reducer, composeWithDevTools(middleware));
 
 ReactDOM.render(
   <Provider store={store}>
-    <App /> 
+    <App />
   </Provider>,
 
-document.getElementById('root'));
-
-
+  document.getElementById("root")
+);
