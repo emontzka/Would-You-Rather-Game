@@ -7,7 +7,7 @@ export const TEMP_ID = 'tempId'
 
 export function handleInitialData () {
   return(dispatch) => {
-    dispatch(showLoading())
+    dispatch(showLoading()) 
     return getInitialData()
       .then(({ users, questions }) => {
         dispatch(receiveUsers(users))

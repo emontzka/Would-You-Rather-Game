@@ -31,6 +31,7 @@ class Login extends Component {
     if (authedUser !== TEMP_ID) {
       return <Redirect to='/' />
     }
+    console.log('props: ', this.props, ' state: ', this.state)
     return (
       <Grid verticalAlign='middle' style={{ height: '100vh', justifyContent: 'center' }}>
         <Grid.Column style={{ maxWidth: 500 }}>
